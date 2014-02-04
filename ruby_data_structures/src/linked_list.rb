@@ -7,19 +7,34 @@ class LinkedList
     @tail = LinkedListNode.new
   end
 
-  def add item
+  #takes a value and adds it to the end of the list
+  def addToTail value
+    @length += 1
+    newNode = LinkedListNode.new(value)
+    oldTail = @tail
+    oldTail.nextNode = newNode
+    @tail = newNode
+    @head.nextNode = newNode if @head.nextNode == nil
   end
 
-  def remove
+  #removes the first node from the list and returns its value
+  def removeHead
+  end
+
+  def contains?
   end
 end
 
 class LinkedListNode
-  attr_accessor :val, :pointer
+  attr_accessor :val, :nextNode
 
-  def initialize(val = nil, pointer = nil)
+  def initialize(val = nil, nextNode = nil)
     @val = val
-    @pointer = pointer
+    @nextNode = nextNode
+  end
+
+  def to_s
+    "(val: [#{val}], nextNode: #{nextNode})"
   end
 end
 
